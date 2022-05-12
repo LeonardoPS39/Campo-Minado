@@ -5,6 +5,7 @@ var buttonCreation
 var board = []
 var minesAmount
 
+
 function easy() {
     difficulty = 1
     difficultyX = 8
