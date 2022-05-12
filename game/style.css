@@ -55,3 +55,10 @@ body {
   border: 0px;
   background-image: url('https://cdn.discordapp.com/attachments/941341178228506644/971137382520868924/unknown.png?size=4096');
 }
+
+img {
+  width: 35px;
+  cursor: pointer;
+  /* display: flex;
+  justify-content: center; */
+}
