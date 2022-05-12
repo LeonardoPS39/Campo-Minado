@@ -32,12 +32,9 @@ function advanced() {
     generateMines()
 }
 
-function teste() {
-    alert('bola gordo')
-}
 
 function generateBoard() {
-
+    board = []
     for(let i = 0; i < difficultyX; i++) {
         board[i] = []
         for(let j = 0; j < difficultyY; j++) {
@@ -48,17 +45,38 @@ function generateBoard() {
 
 function generateMines() {
     var contagem = 0
-        for(var i = 0; i < minesAmount; i++) {
+    var numeroSorteados = []
+    while(contagem < minesAmount) {
+        var repeteLaco = false
 
-            let x = Math.floor(Math.random()*board.length)
-            let y = Math.floor(Math.random()*board.length)
+        let x = Math.floor(Math.random()*board.length)
+        let y = Math.floor(Math.random()*board.length)
 
-            board[x][y] = 'B'
-            contagem++
 
+        for(let j = 0; j < numeroSorteados.length; j = j + 2) { //[10,20,12,3,50,60]
+    
+            if(x == numeroSorteados[j] && y == numeroSorteados[j + 1]) {
+                repeteLaco = true
+                break;
+            }
         }
-        console.table(board)
-        console.log(contagem)
+
+
+        if(repeteLaco) {
+            continue
+        }
+        
+        numeroSorteados.push(x)
+        numeroSorteados.push(y)
+        console.log(`X sorteado: ${x}\t Y sorteado: ${y}`)
+
+        board[x][y] = 'B'
+        contagem++
+
+    }
+
+    console.table(board)
+    console.log(contagem)
 
 }
 
