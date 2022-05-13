@@ -91,9 +91,16 @@ function generateMines() {
 function verifyBombs(posX, posY) {
     var minesAround = 0;
 
+    if(board[posX][posY] == 'B') {
+        alert('Tu clicou na bomba corno');
+        return 'Bomba';
+    }
+
     switch (difficulty) {
         case 1:
-        
+
+        if(posX == 0){
+
             if(posX == 0 && posY == 0) {
 
                 if(board[posX][posY + 1] == 'B') {
@@ -104,10 +111,27 @@ function verifyBombs(posX, posY) {
                     minesAround++;
                 }
 
-                if(board[posX][posY + 1] == 'B') {
+                if(board[posX + 1][posY] == 'B') {
                     minesAround++;
                 }
 
+            }
+
+            if(posX == 0 && posY == 9) {
+
+                if(board[posX + 1][posY] == 'B') {
+                    minesAround++;
+                }
+
+                if(board[posX + 1][posY - 1] == 'B') {
+                    minesAround++;
+                }
+
+                if(board[posX][posY - 1] == 'B') {
+                    minesAround++;
+                }
+
+     
             }
             
             if(posX == 0 && posY != 0 && posY != 9) {
@@ -131,22 +155,549 @@ function verifyBombs(posX, posY) {
                 if(board[posX][posY - 1] == 'B') {
                     minesAround++;
                 }
+
             }
 
+        }else if(posX == 7){
+
+            if(posX == 7 && posY == 0) {
+
+                if(board[posX - 1][posY] == 'B') {
+                    minesAround++;
+                }
+
+                if(board[posX - 1][posY + 1] == 'B')  {
+                    minesAround++;
+                }
+
+                if(board[posX][posY + 1] == 'B') {
+                    minesAround++;
+                }
+
+            }
+
+            if(posX == 7 && posY == 9) {
+
+                if(board[posX - 1][posY] == 'B') {
+                    minesAround++;
+                }
+
+                if(board[posX -1][posY - 1] == 'B') {
+                    minesAround++;
+                }
+
+                if(board[posX][posY - 1] == 'B') {
+                    minesAround++;
+                }
+
+     
+            }
+
+            if(posX == 7 && posY != 0 && posY != 9) {
+
+                if(board[posX - 1][posY] == 'B') {
+                    minesAround++;
+                }
+
+                if(board[posX - 1][posY + 1] == 'B') {
+                    minesAround++;
+                }
+
+                if(board[posX][posY + 1] == 'B') {
+                    minesAround++;
+                }
+
+                if(board[posX][posY - 1] == 'B') {
+                    minesAround++;
+                }
+
+                if(board[posX - 1][posY - 1] == 'B') {
+                    minesAround++;
+                }
+
+            }
+
+
+        }else if(posY == 0 && posX != 0 && posX != 7){
+
+            if(board[posX][posY + 1] == 'B') {
+                minesAround++;
+            }
+
+            if(board[posX + 1][posY + 1] == 'B')  {
+                minesAround++;
+            }
+
+            if(board[posX + 1][posY] == 'B') {
+                minesAround++;
+            }
+
+            if(board[posX -1][posY] == 'B') {
+                minesAround++;
+            }
+
+            if(board[posX -1][posY + 1] == 'B') {
+                minesAround++;
+            }
+
+
+        }else if(posY == 9 && posX != 0 && posX != 7){
+
+            if(board[posX + 1][posY] == 'B') {
+                minesAround++;
+            }
+
+            if(board[posX + 1][posY - 1] == 'B')  {
+                minesAround++;
+            }
+
+            if(board[posX][posY - 1] == 'B') {
+                minesAround++;
+            }
+
+            if(board[posX - 1][posY - 1] == 'B') {
+                minesAround++;
+            }
+
+            if(board[posX -1][posY] == 'B') {
+                minesAround++;
+            }
+        }else {
+
+            if(board[posX -1][posY -1] == 'B')  {
+                minesAround++;
+            }
+        
+            if(board[posX -1][posY] == 'B') {
+                minesAround++;
+            }
+        
+            if(board[posX -1][posY +1] == 'B')  {
+                minesAround++;
+            }
+        
+            if(board[posX][posY -1] == 'B') {
+                minesAround++;
+            }
+        
+            if(board[posX][posY +1] == 'B') {
+                minesAround++;
+            }
+        
+            if(board[posX +1][posY -1] == 'B')  {
+                minesAround++;
+            }
+        
+            if(board[posX +1][posY] == 'B') {
+                minesAround++;
+            }
+        
+            if(board[posX +1][posY +1] == 'B')  {
+                minesAround++;
+            }
+        }
             break;
     
         case 2:
 
-            if(posX == 0 && posY == 0) {
+            if(posX == 0){
 
+                if(posX == 0 && posY == 0) {
+    
+                    if(board[posX][posY + 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX + 1][posY + 1] == 'B')  {
+                        minesAround++;
+                    }
+    
+                    if(board[posX + 1][posY] == 'B') {
+                        minesAround++;
+                    }
+    
+                }
+    
+                if(posX == 0 && posY == 17) {
+    
+                    if(board[posX + 1][posY] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX + 1][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+         
+                }
+                
+                if(posX == 0 && posY != 0 && posX == 17) {
+    
+                    if(board[posX][posY + 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX + 1][posY + 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX + 1][posY] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX + 1][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                }
+    
+            }else if(posX == 13){
+    
+                if(posX == 13 && posY == 0) {
+    
+                    if(board[posX - 1][posY] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX - 1][posY + 1] == 'B')  {
+                        minesAround++;
+                    }
+    
+                    if(board[posX][posY + 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                }
+    
+                if(posX == 13 && posY == 17) {
+    
+                    if(board[posX - 1][posY] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX -1][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+         
+                }
+    
+                if(posX == 13 && posY != 0 && posX == 17) {
+    
+                    if(board[posX - 1][posY] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX - 1][posY + 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX][posY + 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX - 1][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                }
+    
+    
+            }else if(posY == 0 && posX != 0 && posX != 13){
+    
+                if(board[posX][posY + 1] == 'B') {
+                    minesAround++;
+                }
+    
+                if(board[posX + 1][posY + 1] == 'B')  {
+                    minesAround++;
+                }
+    
+                if(board[posX + 1][posY] == 'B') {
+                    minesAround++;
+                }
+    
+                if(board[posX -1][posY] == 'B') {
+                    minesAround++;
+                }
+    
+                if(board[posX -1][posY + 1] == 'B') {
+                    minesAround++;
+                }
+    
+    
+            }else if(posY == 17 && posX != 0 && posX != 13){
+    
+                if(board[posX + 1][posY] == 'B') {
+                    minesAround++;
+                }
+    
+                if(board[posX + 1][posY - 1] == 'B')  {
+                    minesAround++;
+                }
+    
+                if(board[posX][posY - 1] == 'B') {
+                    minesAround++;
+                }
+    
+                if(board[posX - 1][posY - 1] == 'B') {
+                    minesAround++;
+                }
+    
+                if(board[posX -1][posY] == 'B') {
+                    minesAround++;
+                }
+            }else {
+    
+                if(board[posX -1][posY -1] == 'B')  {
+                    minesAround++;
+                }
+            
+                if(board[posX -1][posY] == 'B') {
+                    minesAround++;
+                }
+            
+                if(board[posX -1][posY +1] == 'B')  {
+                    minesAround++;
+                }
+            
+                if(board[posX][posY -1] == 'B') {
+                    minesAround++;
+                }
+            
+                if(board[posX][posY +1] == 'B') {
+                    minesAround++;
+                }
+            
+                if(board[posX +1][posY -1] == 'B')  {
+                    minesAround++;
+                }
+            
+                if(board[posX +1][posY] == 'B') {
+                    minesAround++;
+                }
+            
+                if(board[posX +1][posY +1] == 'B')  {
+                    minesAround++;
+                }
             }
             
             break;
         
         case 3:
 
-            if(posX == 0 && posY == 0) {
+            if(posX == 0){
 
+                if(posX == 0 && posY == 0) {
+    
+                    if(board[posX][posY + 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX + 1][posY + 1] == 'B')  {
+                        minesAround++;
+                    }
+    
+                    if(board[posX + 1][posY] == 'B') {
+                        minesAround++;
+                    }
+    
+                }
+    
+                if(posX == 0 && posY == 23) {
+    
+                    if(board[posX + 1][posY] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX + 1][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+         
+                }
+                
+                if(posX == 0 && posY != 0 && posY != 23) {
+    
+                    if(board[posX][posY + 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX + 1][posY + 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX + 1][posY] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX + 1][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                }
+    
+            }else if(posX == 19){
+    
+                if(posX == 19 && posY == 0) {
+    
+                    if(board[posX - 1][posY] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX - 1][posY + 1] == 'B')  {
+                        minesAround++;
+                    }
+    
+                    if(board[posX][posY + 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                }
+    
+                if(posX == 19 && posY == 23) {
+    
+                    if(board[posX - 1][posY] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX -1][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+         
+                }
+    
+                if(posX == 19 && posY != 0 && posY != 23) {
+    
+                    if(board[posX - 1][posY] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX - 1][posY + 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX][posY + 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                    if(board[posX - 1][posY - 1] == 'B') {
+                        minesAround++;
+                    }
+    
+                }
+    
+    
+            }else if(posY == 0 && posX != 0 && posX != 19){
+    
+                if(board[posX][posY + 1] == 'B') {
+                    minesAround++;
+                }
+    
+                if(board[posX + 1][posY + 1] == 'B')  {
+                    minesAround++;
+                }
+    
+                if(board[posX + 1][posY] == 'B') {
+                    minesAround++;
+                }
+    
+                if(board[posX -1][posY] == 'B') {
+                    minesAround++;
+                }
+    
+                if(board[posX -1][posY + 1] == 'B') {
+                    minesAround++;
+                }
+    
+    
+            }else if(posY == 23 && posX != 0 && posX != 19){
+    
+                if(board[posX + 1][posY] == 'B') {
+                    minesAround++;
+                }
+    
+                if(board[posX + 1][posY - 1] == 'B')  {
+                    minesAround++;
+                }
+    
+                if(board[posX][posY - 1] == 'B') {
+                    minesAround++;
+                }
+    
+                if(board[posX - 1][posY - 1] == 'B') {
+                    minesAround++;
+                }
+    
+                if(board[posX -1][posY] == 'B') {
+                    minesAround++;
+                }
+            }else {
+    
+                if(board[posX -1][posY -1] == 'B')  {
+                    minesAround++;
+                }
+            
+                if(board[posX -1][posY] == 'B') {
+                    minesAround++;
+                }
+            
+                if(board[posX -1][posY +1] == 'B')  {
+                    minesAround++;
+                }
+            
+                if(board[posX][posY -1] == 'B') {
+                    minesAround++;
+                }
+            
+                if(board[posX][posY +1] == 'B') {
+                    minesAround++;
+                }
+            
+                if(board[posX +1][posY -1] == 'B')  {
+                    minesAround++;
+                }
+            
+                if(board[posX +1][posY] == 'B') {
+                    minesAround++;
+                }
+            
+                if(board[posX +1][posY +1] == 'B')  {
+                    minesAround++;
+                }
             }
 
             break;
@@ -223,3 +774,9 @@ function advancedCSS() {
     tableMode.classList.remove("intermediateMode");
     tableMode.classList.add("advancedMode");
 }
+
+// function endGame() {
+
+
+
+// }
