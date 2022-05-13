@@ -2,9 +2,9 @@ var difficulty;
 var difficultyX;
 var difficultyY;
 var board = [];
+var tableMode = document.querySelector(".easyTable")
 var minesAmount;
 var contagem = 0;
-
 
 function easy() {
     difficulty = 1;
@@ -14,6 +14,7 @@ function easy() {
     contagem = 0;
     generateBoard();
     generateHTMLBoard();
+    easyCSS();
 }
 
 function intermediate() {
@@ -24,6 +25,7 @@ function intermediate() {
     contagem = 0;
     generateBoard();
     generateHTMLBoard();
+    intermediateCSS();
 }
 
 function advanced() {
@@ -34,6 +36,7 @@ function advanced() {
     contagem = 0;
     generateBoard();
     generateHTMLBoard();
+    advancedCSS();
 }
 
 
@@ -59,11 +62,11 @@ function generateMines() {
         let y = Math.floor(Math.random()*board.length);
 
 
-        for(let j = 0; j < numeroSorteados.length; j = j + 2) { //[10,20,12,3,50,60]
+        for(let j = 0; j < numeroSorteados.length; j = j + 2) {
     
             if(x == numeroSorteados[j] && y == numeroSorteados[j + 1]) {
                 repeteLaco = true;
-                break;;
+                break;
             }
         }
 
@@ -82,8 +85,6 @@ function generateMines() {
     
     console.table(board);
     console.log(contagem);
-
-
 }
 
 
@@ -131,17 +132,32 @@ var boardLabel
 
 function generateHTMLBoard() {
 
-    boardLabel = document.getElementById('board').innerHTML = null
+    boardLabel = document.getElementById('board').innerHTML = null;
 
     for(let i = 0; i < difficultyX; i++) {
 
-        // boardLabel = document.getElementById('board').innerHTML += '<br>'
-
         for(let j = 0; j < difficultyY; j++) {
 
-            boardLabel = document.getElementById('board').innerHTML += `<img src="../img/fechado.jpeg" onclick="generateMines()">`
+            boardLabel = document.getElementById('board').innerHTML += `<img src="../img/fechado.jpeg" onclick="generateMines()">`;
         }
     }
-
 }
 
+function easyCSS() {
+    tableMode.classList.remove("intermediateMode");
+    tableMode.classList.remove("advancedMode");
+    tableMode.classList.add("easyMode");
+}
+
+function intermediateCSS() {
+    tableMode.classList.remove("easyMode");
+    tableMode.classList.remove("advancedMode");
+    tableMode.classList.add("intermediateMode");
+    
+}
+
+function advancedCSS() {
+    tableMode.classList.remove("easyMode");
+    tableMode.classList.remove("intermediateMode");
+    tableMode.classList.add("advancedMode");
+}
