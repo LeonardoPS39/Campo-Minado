@@ -91,37 +91,99 @@ function generateMines() {
 function verifyBombs(posX, posY) {
     var minesAround = 0;
 
-    if(board[posX -1][posY -1] == 'B')  {
-        minesAround++;
+    switch (difficulty) {
+        case 1:
+        
+            if(posX == 0 && posY == 0) {
+
+                if(board[posX][posY + 1] == 'B') {
+                    minesAround++;
+                }
+
+                if(board[posX + 1][posY + 1] == 'B')  {
+                    minesAround++;
+                }
+
+                if(board[posX][posY + 1] == 'B') {
+                    minesAround++;
+                }
+
+            }
+            
+            if(posX == 0 && posY != 0 && posY != 9) {
+
+                if(board[posX][posY + 1] == 'B') {
+                    minesAround++;
+                }
+
+                if(board[posX + 1][posY + 1] == 'B') {
+                    minesAround++;
+                }
+
+                if(board[posX + 1][posY] == 'B') {
+                    minesAround++;
+                }
+
+                if(board[posX + 1][posY - 1] == 'B') {
+                    minesAround++;
+                }
+
+                if(board[posX][posY - 1] == 'B') {
+                    minesAround++;
+                }
+            }
+
+            break;
+    
+        case 2:
+
+            if(posX == 0 && posY == 0) {
+
+            }
+            
+            break;
+        
+        case 3:
+
+            if(posX == 0 && posY == 0) {
+
+            }
+
+            break;
     }
 
-    if(board[posX -1][posY] == 'B') {
-        minesAround++;
-    }
 
-    if(board[posX -1][posY +1] == 'B')  {
-        minesAround++;
-    }
+    // if(board[posX -1][posY -1] == 'B')  {
+    //     minesAround++;
+    // }
 
-    if(board[posX][posY -1] == 'B') {
-        minesAround++;
-    }
+    // if(board[posX -1][posY] == 'B') {
+    //     minesAround++;
+    // }
 
-    if(board[posX][posY +1] == 'B') {
-        minesAround++;
-    }
+    // if(board[posX -1][posY +1] == 'B')  {
+    //     minesAround++;
+    // }
 
-    if(board[posX +1][posY -1] == 'B')  {
-        minesAround++;
-    }
+    // if(board[posX][posY -1] == 'B') {
+    //     minesAround++;
+    // }
 
-    if(board[posX +1][posY] == 'B') {
-        minesAround++;
-    }
+    // if(board[posX][posY +1] == 'B') {
+    //     minesAround++;
+    // }
 
-    if(board[posX +1][posY +1] == 'B')  {
-        minesAround++;
-    }
+    // if(board[posX +1][posY -1] == 'B')  {
+    //     minesAround++;
+    // }
+
+    // if(board[posX +1][posY] == 'B') {
+    //     minesAround++;
+    // }
+
+    // if(board[posX +1][posY +1] == 'B')  {
+    //     minesAround++;
+    // }
 
 
     return board[posX][posY] = minesAround;
