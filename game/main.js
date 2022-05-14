@@ -5,6 +5,7 @@ var board = [];
 var tableMode = document.querySelector(".easyTable")
 var minesAmount;
 var contagem = 0;
+var controleRandomizacao;
 
 function easy() {
     difficulty = 1;
@@ -12,6 +13,7 @@ function easy() {
     difficultyY = 10;
     minesAmount = 10;
     contagem = 0;
+    controleRandomizacao = 2;
     generateBoard();
     generateHTMLBoard();
     easyCSS();
@@ -23,6 +25,7 @@ function intermediate() {
     difficultyY = 18;
     minesAmount = 40;
     contagem = 0;
+    controleRandomizacao = 4;
     generateBoard();
     generateHTMLBoard();
     intermediateCSS();
@@ -34,6 +37,7 @@ function advanced() {
     difficultyY = 24;
     minesAmount = 99;
     contagem = 0;
+    controleRandomizacao = 4;
     generateBoard();
     generateHTMLBoard();
     advancedCSS();
@@ -59,8 +63,9 @@ function generateMines() {
         var repeteLaco = false;
 
         let x = Math.floor(Math.random()*board.length);
-        let y = Math.floor(Math.random()*board.length);
+        let y = Math.floor(Math.random()*(board.length + controleRandomizacao));
 
+        console.log(`X sorteado: ${x}\t Y sorteado: ${y}`);
 
         for(let j = 0; j < numeroSorteados.length; j = j + 2) {
     
@@ -76,7 +81,6 @@ function generateMines() {
         
         numeroSorteados.push(x);
         numeroSorteados.push(y);
-        console.log(`X sorteado: ${x}\t Y sorteado: ${y}`);
 
         board[x][y] = 'B';
         contagem++;
