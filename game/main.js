@@ -7,6 +7,8 @@ var minesAmount;
 var contagem = 0;
 var controleRandomizacao;
 
+window.onload = intermediate();
+
 function easy() {
     difficulty = 1;
     difficultyX = 8;
@@ -55,29 +57,36 @@ function generateBoard() {
 }
 
 
-function generateMines() {
+function generateMines(cliqueX, cliqueY) {
 
     contagem = 0;
     var numeroSorteados = [];
+    generateGamingHTMLBoard();
+
+    numeroSorteados.push(cliqueX);
+    numeroSorteados.push(cliqueY);
+
     while(contagem < minesAmount) {
         var repeteLaco = false;
 
+        
         let x = Math.floor(Math.random()*board.length);
         let y = Math.floor(Math.random()*(board.length + controleRandomizacao));
-
+        
         console.log(`X sorteado: ${x}\t Y sorteado: ${y}`);
-
-        for(let j = 0; j < numeroSorteados.length; j = j + 2) {
-    
+        
+        for(var j = 0; j < numeroSorteados.length; j = j + 2) {
+            
             if(x == numeroSorteados[j] && y == numeroSorteados[j + 1]) {
                 repeteLaco = true;
                 break;
             }
         }
-
+        
         if(repeteLaco) {
             continue;
         }
+        
         
         numeroSorteados.push(x);
         numeroSorteados.push(y);
@@ -91,12 +100,48 @@ function generateMines() {
     console.log(contagem);
 }
 
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+function bandeira(posX, posY) {
+
+    var eventId = document.getElementById(`${posX}${posY}`);
+
+    eventId.addEventListener("mousedown", function(click) {
+
+
+        if(click.buttons == 2) {
+
+            if(eventId.classList.contains("flag")) {
+                
+                eventId.src = "../img/fechado.jpeg";
+                eventId.classList.remove("flag");
+                eventId.classList.add("notFlag");
+                console.log('Já tem bandeira');
+                
+            }else {
+                
+                eventId.src = "../img/bandeira.jpeg";
+                eventId.classList.add("flag");
+                console.log("Clicou");
+
+            }
+        }
+    });
+
+
+}
+
 
 function verifyBombs(posX, posY) {
     var minesAround = 0;
 
+    // while(minesAround == 0) {
+
+    // }
+
+
     if(board[posX][posY] == 'B') {
-        alert('Tu clicou na bomba corno');
+        alert('Você clicou na bomba!');
         return 'Bomba';
     }
 
@@ -740,7 +785,9 @@ function verifyBombs(posX, posY) {
     //     minesAround++;
     // }
 
+    //runByBoard(posX, posY, minesAround);
 
+    console.log(posX, posY);
     return board[posX][posY] = minesAround;
 
 }
@@ -751,11 +798,11 @@ function generateHTMLBoard() {
 
     boardLabel = document.getElementById('board').innerHTML = null;
 
-    for(let i = 0; i < difficultyX; i++) {
+    for(var i = 0; i < difficultyX; i++) {
 
-        for(let j = 0; j < difficultyY; j++) {
+        for(var j = 0; j < difficultyY; j++) {
 
-            boardLabel = document.getElementById('board').innerHTML += `<img src="../img/fechado.jpeg" onclick="generateMines()">`;
+            boardLabel = document.getElementById('board').innerHTML += `<img src="../img/fechado.jpeg" onclick="generateMines(${i}, ${j})">`;
         }
     }
 }
@@ -779,8 +826,138 @@ function advancedCSS() {
     tableMode.classList.add("advancedMode");
 }
 
-// function endGame() {
+function generateGamingHTMLBoard() {
+
+    boardLabel = document.getElementById('board').innerHTML = null;
+
+    for(var i = 0; i < difficultyX; i++) {
+
+        for(var j = 0; j < difficultyY; j++) {
+
+            boardLabel = document.getElementById('board').innerHTML += `<img src="../img/fechado.jpeg" onmousedown="bandeira(${i},${j})" onclick="verifyBombs(${i},${j})" id="${i}${j}">`;
+        }
+    }
+}
+
+// function generateGamingHTMLBoardWithNumbers() {
+
+//     boardLabel = document.getElementById('board').innerHTML = null;
+
+//     for(var i = 0; i < difficultyX; i++) {
+
+//         for(var j = 0; j < difficultyY; j++) {
+
+//             boardLabel = document.getElementById('board').innerHTML += `<img src="../img/fechado.jpeg" onclick="verifyBombs(${i},${j})">`;
+//         }
+//     }
+// }
 
 
+
+// function runByBoard(spotX, spotY, minescheked) {
+    
+
+//     /*if(spotX == 0 && spotY == 0) {
+
+//         do {
+
+
+            
+//         } while (spotX == 0 && spotY == 0);
+//     }else {
+
+//     }*/
+
+//     if(minescheked == 0){
+
+//         // var clearSpots = [spotX - 1 spotY - 1, ... , ... , ... , ...]
+
+//         do {
+            
+//             if(board[spotX -1][spotY -1] == 'B')  {
+//                 minescheked++;
+//             } else {
+
+//                 clearSpots.push(`${spotX - 1} ${spotY - 1}`);
+
+//             }
+
+//             if(board[spotX -1][spotY] == 'B') {
+//                 minescheked++;
+//             }
+
+//             if(board[spotX -1][spotY +1] == 'B')  {
+//                 minescheked++;
+//             }
+
+//             if(board[spotX][spotY -1] == 'B') {
+//                 minescheked++;
+//             }
+
+//             if(board[spotX][spotY +1] == 'B') {
+//                 minescheked++;
+//             }
+
+//             if(board[spotX +1][spotY -1] == 'B')  {
+//                 minescheked++;
+//             }
+
+//             if(board[spotX +1][spotY] == 'B') {
+//                 minescheked++;
+//             }
+
+//             if(board[spotX +1][spotY +1] == 'B')  {
+//                 minescheked++;
+//             }
+            
+
+//         } while(minescheked != 0);
+//     }
+
+//     /*
+//         clearSpots = [posX -1, posY -1, ... ,]
+
+//         fro(let i = o; i menor que clearSpots.length; i = i + 2){
+            
+//             spotX = posição do veto 1
+//             spotY = posição do vetor 2
+
+//             if(board[spotX -1][spotY -1] == 'B')  {
+//                 minescheked++;
+//             } else {
+
+//                 clearSpots.push(`${spotX - 1} ${spotY - 1}`);
+//             }
+
+//             if(board[spotX -1][spotY] == 'B') {
+//                 minescheked++;
+//             }
+
+//             if(board[spotX -1][spotY +1] == 'B')  {
+//                 minescheked++;
+//             }
+
+//             if(board[spotX][spotY -1] == 'B') {
+//                 minescheked++;
+//             }
+
+//             if(board[spotX][spotY +1] == 'B') {
+//                 minescheked++;
+//             }
+
+//             if(board[spotX +1][spotY -1] == 'B')  {
+//                 minescheked++;
+//             }
+
+//             if(board[spotX +1][spotY] == 'B') {
+//                 minescheked++;
+//             }
+
+//             if(board[spotX +1][spotY +1] == 'B')  {
+//                 minescheked++;
+//             }
+//         }
+
+//     */
 
 // }

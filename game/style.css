@@ -57,8 +57,14 @@ body {
 img {
   width: 30px;
   cursor: pointer;
-  object-fit: cover;
+  /* object-fit: cover; */
+  transition: 0s ease;
   margin-top: -4px;
+}
+
+img:hover {
+  opacity: 60%;
+  transition: 0s ease;
 }
 
 .easyMode {
