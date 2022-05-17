@@ -264,8 +264,8 @@ function generateMines(cliqueX, cliqueY) {
                     }
                 }
             }
-        }
             board[i][j] = minesAround;
+        }
     }
 
     console.table(board);
@@ -323,7 +323,7 @@ function generateHTMLBoard() {
 
         for(var j = 0; j < difficultyY; j++) {
 
-            boardLabel = document.getElementById('board').innerHTML += `<img src="../img/fechado.jpeg" onclick="generateMines(${i}, ${j})">`;
+            boardLabel = document.getElementById('board').innerHTML += `<img src="../img/fechado.jpeg"  onclick="generateMines(${i}, ${j})">`;
         }
     }
 }
