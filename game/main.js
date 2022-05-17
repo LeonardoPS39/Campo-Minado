@@ -264,8 +264,8 @@ function generateMines(cliqueX, cliqueY) {
                     }
                 }
             }
-        }
             board[i][j] = minesAround;
+        }
     }
 
     console.table(board);
