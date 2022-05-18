@@ -40,6 +40,7 @@ function easy() {
     generateHTMLBoard();
     easyCSS();
     bandeiraTag.innerHTML = `<p>${countFlags} &#128681</p>`;
+    counter = 0
     timerTag.innerHTML = `Tempo: ${counter}`
 }
 
@@ -55,6 +56,7 @@ function intermediate() {
     generateHTMLBoard();
     intermediateCSS();
     bandeiraTag.innerHTML = `<p>${countFlags} &#128681</p>`;
+    counter = 0
     timerTag.innerHTML = `Tempo: ${counter}`
 }
 
@@ -70,6 +72,7 @@ function advanced() {
     generateHTMLBoard();
     advancedCSS();
     bandeiraTag.innerHTML = `<p>${countFlags} &#128681</p>`;
+    counter = 0
     timerTag.innerHTML = `Tempo: ${counter}`
 }
 
@@ -516,7 +519,7 @@ function bandeira(posX, posY) {
     }
 }
 
-var boardLabel
+var boardLabel;
 
 function generateHTMLBoard() {
 
@@ -569,7 +572,7 @@ var changeAround;
 function generateGamingHTMLBoardWithNumbers(posX, posY) {
 
     arrPos0 = [];
-    var changeImg = document.getElementById(`${posX},${posY}`)
+    var changeImg = document.getElementById(`${posX},${posY}`);
     arrPos0.push(posX);
     arrPos0.push(posY);
 
@@ -599,34 +602,58 @@ function generateGamingHTMLBoardWithNumbers(posX, posY) {
         switch (board[posX][posY]) {
             case 1:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_1.jpeg";
+                changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
+                changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
+                changeImg.className = 'open';
                 break;
         
             case 2:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_2.jpeg";
+                changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
+                changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
+                changeImg.className = 'open';
                 break;
 
             case 3:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_3.jpeg";
+                changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
+                changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
+                changeImg.className = 'open';
                 break;
 
             case 4:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_4.jpeg";
+                changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
+                changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
+                changeImg.className = 'open';
                 break;
 
             case 5:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_5.jpeg";
+                changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
+                changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
+                changeImg.className = 'open';
                 break;
 
             case 6:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_6.jpeg";
+                changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
+                changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
+                changeImg.className = 'open';
                 break;
 
             case 7:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_7.jpeg";
+                changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
+                changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
+                changeImg.className = 'open';
                 break;
 
             case 8:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_8.jpeg";
+                changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
+                changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
+                changeImg.className = 'open';
                 break;
         }
     }else{
@@ -638,43 +665,51 @@ function generateGamingHTMLBoardWithNumbers(posX, posY) {
     return console.log('Funcionou até o fim.');
 }
 
+var countToWin = 0;
 function openBoard(posX, posY) {
     var changeAtributes;
     for (var i = posX - 1; i <= posX + 1; i++) {
         for (var j = posY - 1; j <= posY + 1; j++) {
             if (i >= 0 && i < difficultyX && j >= 0 && j < difficultyY) {
                 var square = document.getElementById(`${i},${j}`);
-                if (square.className !== "blank") {
-                    switch (board [i][j]) {
+                if (square.className !== "open") {
+                    switch (board[i][j]) {
                         case "B":
                             break;
                         case 0:
                             square.src = '../img/aberto_0.jpeg'
-                            square.className = "blank";
+                            square.className = "open";
                             changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                             changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
+                            
                             openBoard(i, j);
                             break;
                         default:
                         switch(board[i][j]) {
                             case 1:
                                 square.src = "../img/aberto_1.jpeg";
+                                square.className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
+                                
 
                                 break;
                         
                             case 2:
                                 square.src = "../img/aberto_2.jpeg";
+                                square.className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
+                                
 
                                 break;
 
                             case 3:
                                 square.src = "../img/aberto_3.jpeg";
+                                square.className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
+                                
 
                                 break;
 
@@ -682,41 +717,88 @@ function openBoard(posX, posY) {
                                 square.src = "../img/aberto_4.jpeg";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
+                                
 
                                 break;
 
                             case 5:
                                 square.src = "../img/aberto_5.jpeg";
+                                square.className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
+                                
 
                                 break;
 
                             case 6:
                                 square.src = "../img/aberto_6.jpeg";
+                                square.className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
+                                
 
                                 break;
 
                             case 7:
                                 square.src = "../img/aberto_7.jpeg";
+                                square.className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
+                                
 
                                 break;
 
                             case 8:
                                 square.src = "../img/aberto_8.jpeg";
+                                square.className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
+                                
 
                                 break;
                         }
-                        square.className = "blank";
+                        square.className = "open";
                     }
                 }
             }
         }
+    }
+
+    var amountToWin = difficultyX * difficultyY;
+
+    countToWin = 0;
+
+    for(var i = 0; i < board.length; i++) {
+
+        for(var j = 0; j < board.length + controleRandomizacao; j++) {
+
+            if(document.getElementById(`${i},${j}`).classList.contains('open')) {
+                countToWin++
+                console.log(countToWin);
+            }
+        }
+    }
+
+    if(countToWin == amountToWin) {
+
+        for(var i = 0; i < board.length; i++) {
+                
+            for(var j = 0; j < board.length + controleRandomizacao; j++) {
+                
+                if(board[i][j] == 'B'){
+                    
+                    changeImg = document.getElementById(`${i},${j}`).src = "../img/bomba_1.jpeg";
+                    changeImg = document.getElementById(`${i},${j}`).onmousedown = "";
+                    changeImg = document.getElementById(`${i},${j}`).onclick = "";
+                    
+                }
+    
+                changeImg = document.getElementById(`${i},${j}`).onmousedown = "";
+                changeImg = document.getElementById(`${i},${j}`).onclick = "";
+                changeImg = document.getElementById(`${i},${j}`).id = "";
+    
+            }
+        }
+        alert("Você venceu!!\nPara recomeçar, escolha uma dificuldade.")
     }
 }
