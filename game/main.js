@@ -8,12 +8,16 @@ var contagem = 0;
 var controleRandomizacao;
 var countFlags;
 var bandeiraTag = document.getElementById('countFlag');
+var countToWin = 0;
 
 var timer;
 var counter = 0
 var timerTag = document.getElementById('timer')
 
 function startCounter() {
+
+    //Essa função não deve ser avaliada pois foi escrita após o prazo da entrega!
+    
     counter = 0
     timer = setInterval(function(){
         counter++
@@ -22,6 +26,9 @@ function startCounter() {
 }
 
 function stopCounter() {
+
+    //Essa função não deve ser avaliada pois foi escrita após o prazo da entrega!
+
     counter = 0
     clearInterval(timer);
 }
@@ -29,6 +36,7 @@ function stopCounter() {
 window.onload = intermediate();
 
 function easy() {
+    stopCounter();
     difficulty = 1;
     difficultyX = 8;
     difficultyY = 10;
@@ -36,6 +44,7 @@ function easy() {
     contagem = 0;
     countFlags = 10;
     controleRandomizacao = 2;
+    countToWin = 0;
     generateBoard();
     generateHTMLBoard();
     easyCSS();
@@ -45,6 +54,7 @@ function easy() {
 }
 
 function intermediate() {
+    stopCounter();
     difficulty = 2;
     difficultyX = 14;
     difficultyY = 18;
@@ -52,6 +62,7 @@ function intermediate() {
     countFlags = 40;
     contagem = 0;
     controleRandomizacao = 4;
+    countToWin = 0;
     generateBoard();
     generateHTMLBoard();
     intermediateCSS();
@@ -61,6 +72,7 @@ function intermediate() {
 }
 
 function advanced() {
+    stopCounter();
     difficulty = 3;
     difficultyX = 20;
     difficultyY = 24;
@@ -68,6 +80,7 @@ function advanced() {
     countFlags = 99;
     contagem = 0;
     controleRandomizacao = 4;
+    countToWin = 0;
     generateBoard();
     generateHTMLBoard();
     advancedCSS();
@@ -509,6 +522,8 @@ function bandeira(posX, posY) {
         }else {
             
             imgTag.src = "../img/bandeira.jpeg";
+            imgTag.classList.remove("blocked");
+            imgTag.classList.remove("notFlag");
             imgTag.classList.add("flag");
             countFlags--
             bandeiraTag.innerHTML = `<p>${countFlags} &#128681</p>`;
@@ -604,56 +619,81 @@ function generateGamingHTMLBoardWithNumbers(posX, posY) {
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_1.jpeg";
                 changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
                 changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
-                changeImg.className = 'open';
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('blocked');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('flag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('notFlag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.add('open');
+                winCondition();
                 break;
         
             case 2:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_2.jpeg";
                 changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
                 changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
-                changeImg.className = 'open';
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('flag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('notFlag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.add('open');
+                winCondition();
                 break;
 
             case 3:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_3.jpeg";
                 changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
                 changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
-                changeImg.className = 'open';
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('flag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('notFlag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.add('open');
+                winCondition();
                 break;
 
             case 4:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_4.jpeg";
                 changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
                 changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
-                changeImg.className = 'open';
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('flag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('notFlag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.add('open');
+                winCondition();
                 break;
 
             case 5:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_5.jpeg";
                 changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
                 changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
-                changeImg.className = 'open';
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('flag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('notFlag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.add('open');
+                winCondition();
                 break;
 
             case 6:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_6.jpeg";
                 changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
                 changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
-                changeImg.className = 'open';
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('flag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('notFlag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.add('open');
+                winCondition();
                 break;
 
             case 7:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_7.jpeg";
                 changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
                 changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
-                changeImg.className = 'open';
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('flag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('notFlag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.add('open');
+                winCondition();
                 break;
 
             case 8:
                 changeImg = document.getElementById(`${posX},${posY}`).src = "../img/aberto_8.jpeg";
                 changeImg = document.getElementById(`${posX},${posY}`).onmousedown = "";
                 changeImg = document.getElementById(`${posX},${posY}`).onclick = "";
-                changeImg.className = 'open';
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('flag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.remove('notFlag');
+                changeImg = document.getElementById(`${posX},${posY}`).classList.add('open');
+                winCondition();
                 break;
         }
     }else{
@@ -665,7 +705,7 @@ function generateGamingHTMLBoardWithNumbers(posX, posY) {
     return console.log('Funcionou até o fim.');
 }
 
-var countToWin = 0;
+
 function openBoard(posX, posY) {
     var changeAtributes;
     for (var i = posX - 1; i <= posX + 1; i++) {
@@ -678,7 +718,7 @@ function openBoard(posX, posY) {
                             break;
                         case 0:
                             square.src = '../img/aberto_0.jpeg'
-                            square.className = "open";
+                            square = document.getElementById(`${i},${j}`).className = "open";
                             changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                             changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
                             
@@ -688,7 +728,7 @@ function openBoard(posX, posY) {
                         switch(board[i][j]) {
                             case 1:
                                 square.src = "../img/aberto_1.jpeg";
-                                square.className = "open";
+                                square = document.getElementById(`${i},${j}`).className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
                                 
@@ -697,7 +737,7 @@ function openBoard(posX, posY) {
                         
                             case 2:
                                 square.src = "../img/aberto_2.jpeg";
-                                square.className = "open";
+                                square = document.getElementById(`${i},${j}`).className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
                                 
@@ -706,7 +746,7 @@ function openBoard(posX, posY) {
 
                             case 3:
                                 square.src = "../img/aberto_3.jpeg";
-                                square.className = "open";
+                                square = document.getElementById(`${i},${j}`).className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
                                 
@@ -715,6 +755,7 @@ function openBoard(posX, posY) {
 
                             case 4:
                                 square.src = "../img/aberto_4.jpeg";
+                                square = document.getElementById(`${i},${j}`).className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
                                 
@@ -723,7 +764,7 @@ function openBoard(posX, posY) {
 
                             case 5:
                                 square.src = "../img/aberto_5.jpeg";
-                                square.className = "open";
+                                square = document.getElementById(`${i},${j}`).className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
                                 
@@ -732,7 +773,7 @@ function openBoard(posX, posY) {
 
                             case 6:
                                 square.src = "../img/aberto_6.jpeg";
-                                square.className = "open";
+                                square = document.getElementById(`${i},${j}`).className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
                                 
@@ -741,7 +782,7 @@ function openBoard(posX, posY) {
 
                             case 7:
                                 square.src = "../img/aberto_7.jpeg";
-                                square.className = "open";
+                                square = document.getElementById(`${i},${j}`).className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
                                 
@@ -750,34 +791,41 @@ function openBoard(posX, posY) {
 
                             case 8:
                                 square.src = "../img/aberto_8.jpeg";
-                                square.className = "open";
+                                square = document.getElementById(`${i},${j}`).className = "open";
                                 changeAtributes = document.getElementById(`${i},${j}`).onmousedown = '';
                                 changeAtributes = document.getElementById(`${i},${j}`).onclick = '';
                                 
 
                                 break;
                         }
-                        square.className = "open";
+                        square = document.getElementById(`${i},${j}`).className = "open";
                     }
                 }
             }
         }
     }
 
-    var amountToWin = difficultyX * difficultyY;
+    winCondition();
+}
 
+function winCondition() {
+    
+    //Essa função não deve ser avaliada pois foi escrita após o prazo da entrega!
+
+    var amountToWin = difficultyX * difficultyY - minesAmount;
     countToWin = 0;
 
     for(var i = 0; i < board.length; i++) {
 
         for(var j = 0; j < board.length + controleRandomizacao; j++) {
 
-            if(document.getElementById(`${i},${j}`).classList.contains('open')) {
-                countToWin++
-                console.log(countToWin);
+            if(document.getElementById(`${i},${j}`).classList.contains('open') || document.getElementById(`${i},${j}`).classList.contains('blocked open')) {
+                countToWin++;
             }
+
         }
     }
+
 
     if(countToWin == amountToWin) {
 
@@ -790,15 +838,17 @@ function openBoard(posX, posY) {
                     changeImg = document.getElementById(`${i},${j}`).src = "../img/bomba_1.jpeg";
                     changeImg = document.getElementById(`${i},${j}`).onmousedown = "";
                     changeImg = document.getElementById(`${i},${j}`).onclick = "";
+                    console.log('gg');
                     
                 }
     
                 changeImg = document.getElementById(`${i},${j}`).onmousedown = "";
                 changeImg = document.getElementById(`${i},${j}`).onclick = "";
                 changeImg = document.getElementById(`${i},${j}`).id = "";
+                console.log('gg');
+                stopCounter();
     
             }
         }
-        alert("Você venceu!!\nPara recomeçar, escolha uma dificuldade.")
     }
 }
