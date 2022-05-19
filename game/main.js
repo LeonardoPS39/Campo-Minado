@@ -305,7 +305,6 @@ function generateMines(cliqueX, cliqueY) {
         let x = Math.floor(Math.random()*board.length);
         let y = Math.floor(Math.random()*(board.length + controleRandomizacao));
         
-        console.log(`X sorteado: ${x}\t Y sorteado: ${y}`);
         
         for(var j = 0; j < numeroSorteados.length; j = j + 2) {
 
@@ -495,8 +494,6 @@ function generateMines(cliqueX, cliqueY) {
     generateGamingHTMLBoard();
     generateGamingHTMLBoardWithNumbers(cliqueX, cliqueY);
     startCounter();
-    console.table(board);
-    console.log(contagem);
 }
 
 
@@ -517,7 +514,6 @@ function bandeira(posX, posY) {
             imgTag.classList.add("notFlag");
             countFlags++
             bandeiraTag.innerHTML = `<p>${countFlags} &#128681</p>`;
-            console.log('Já tem bandeira');
             
         }else {
             
@@ -527,7 +523,6 @@ function bandeira(posX, posY) {
             imgTag.classList.add("flag");
             countFlags--
             bandeiraTag.innerHTML = `<p>${countFlags} &#128681</p>`;
-            console.log("Clicou");
 
         }
 
@@ -702,7 +697,7 @@ function generateGamingHTMLBoardWithNumbers(posX, posY) {
 
     }
 
-    return console.log('Funcionou até o fim.');
+    return;
 }
 
 
@@ -838,14 +833,12 @@ function winCondition() {
                     changeImg = document.getElementById(`${i},${j}`).src = "../img/bomba_1.jpeg";
                     changeImg = document.getElementById(`${i},${j}`).onmousedown = "";
                     changeImg = document.getElementById(`${i},${j}`).onclick = "";
-                    console.log('gg');
                     
                 }
     
                 changeImg = document.getElementById(`${i},${j}`).onmousedown = "";
                 changeImg = document.getElementById(`${i},${j}`).onclick = "";
                 changeImg = document.getElementById(`${i},${j}`).id = "";
-                console.log('gg');
                 stopCounter();
     
             }
