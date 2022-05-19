@@ -89,6 +89,7 @@ img:hover {
   flex-wrap: wrap;
   height: 600px;
   width: 720px;
+  
 }
 
 .countFlag {
@@ -100,4 +101,12 @@ img:hover {
   border-width: 2px;
   border-color: black;
   border-radius: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }

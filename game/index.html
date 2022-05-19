@@ -9,24 +9,14 @@
     <title>Campo Minado</title>
 </head>
 <body>
-    <center>
+    <div class="container">
         <div class="chooseDifficulty">
             <h1>Campo Minado</h1>
-            <h1>Ecolha a dificuldade do Campo Minado:</h1>
+            <h1>Escolha a dificuldade:</h1>
             <h3>Clique com o botão direito na posição que você quer para adicionar ou retirar a bandeira.</h3>
-            <table>
-                <tr>
-                    <td>
-                        <button class="difficulty" onclick="easy()">Fácil</button>
-                    </td>
-                    <td>
-                        <button class="difficulty" onclick="intermediate()">Intermediário</button>
-                    </td>
-                    <td>
-                        <button class="difficulty" onclick="advanced()">Avançado</button>
-                    </td>
-                </tr>
-            </table>
+            <button class="difficulty" onclick="easy()">Fácil</button>
+            <button class="difficulty" onclick="intermediate()">Intermediário</button>
+            <button class="difficulty" onclick="advanced()">Avançado</button>
             <h2 class="titulos">Bom jogo!</h2>
         </div>
 
@@ -38,6 +28,6 @@
         <div class="easyTable">
             <label id="board"></label>
         </div>
-    </center>
+    </div>
 </body>
 </html>
